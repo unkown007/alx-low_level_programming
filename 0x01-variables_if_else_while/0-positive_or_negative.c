@@ -4,6 +4,11 @@
 #include <stdio.h>
 
 /* betty style doc for function main goes there */
+/**
+ * Entry point
+ *
+ * Always return 0, (Success code)
+ */
 int main(void)
 {
 	int n;
@@ -11,12 +16,12 @@ int main(void)
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	/* your code goes there */
-	if(n > 0)
-		printf("The number is positive\n");
+	if( n > 0 )
+		printf("%d is positive\n", n);
 	else
-		if(n < 0)
-			printf("The number is negative\n");
+		if( n < 0 )
+			printf("%d is negative\n", n);
 		else
-			printf("The number is zero\n");
+			printf("%d is zero\n", n);
 	return (0);
 }
