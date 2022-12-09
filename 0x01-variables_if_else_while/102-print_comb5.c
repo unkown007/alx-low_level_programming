@@ -13,11 +13,11 @@ int main(void)
 	aux = 1;
 	for (i = 0; i <= 9; i++)
 	{
-		for (j = 0; j < 9; j++)
+		for (j = 0; j <= 9; j++)
 		{
-			for (k = 0; k <= 9; k++)
+			for (k = (i > 0 ? i : 0), l = (aux != 1 ? (i > 0 ? j + 1 : 0) : 1); k <= 9; k++)
 			{
-				for (l = (aux != 1 ? 0 : 1)/*(aux != 1 ? (i > 0 ? j + 1 : j) : 1)*/; l <= 9; l++)
+				for (; l <= 9; l++)
 				{
 					if ((i == k) && (j == l))
 						continue;
@@ -26,12 +26,12 @@ int main(void)
 					putchar(' ');
 					putchar(min + k);
 					putchar(min + l);
-					if (j <= 8)
-					{
-						putchar(',');
-						putchar(' ');
-					}
+					if (i == 9 && l == 9 && j == 8)
+						continue;
+					putchar(',');
+					putchar(' ');
 				}
+				l = 0;
 				aux = 0;
 			}
 		}
