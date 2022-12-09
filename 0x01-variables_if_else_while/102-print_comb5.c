@@ -19,6 +19,8 @@ int main(void)
 			{
 				for (l = (aux != 1 ? 0 : 1)/*(aux != 1 ? (i > 0 ? j + 1 : j) : 1)*/; l <= 9; l++)
 				{
+					if ((i == k) && (j == l))
+						continue;
 					putchar(min + i);
 					putchar(min + j);
 					putchar(' ');
