@@ -15,12 +15,11 @@ int main(void)
 	{
 		for (j = 0; j < 9; j++)
 		{
-			for (k = i; k <= 9; k++)
+			for (k = 0; k <= 9; k++)
 			{
-				for (l = (aux != 1 ? (j > 0 ? j + 1 : j) : 1);\
-					l <= 9; l++)
+				for (l = (aux != 1 ? 0 : 1)/*(aux != 1 ? (i > 0 ? j + 1 : j) : 1)*/; l <= 9; l++)
 				{
-					putchar(min+i);
+					putchar(min + i);
 					putchar(min + j);
 					putchar(' ');
 					putchar(min + k);
