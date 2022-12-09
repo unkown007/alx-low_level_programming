@@ -3,11 +3,10 @@
 /* more headers goes there */
 #include <stdio.h>
 
-/* betty style doc for function main goes there */
 /**
- * Entry point
+ * main - Entry point
  *
- * Always return 0, (Success code)
+ * Return: Always 0 (sucess)
  */
 int main(void)
 {
