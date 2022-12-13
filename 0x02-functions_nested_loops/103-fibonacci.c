@@ -46,7 +46,7 @@ void fibonacci(void)
 
 	a1 = 1;
 	a2 = 2;
-	sum = a2 + a1;
+	sum = a2;
 
 	while (an < 4000000)
 	{
@@ -54,7 +54,8 @@ void fibonacci(void)
 		a1 = a2;
 		a2 = an;
 
-		sum += an;
+		if ((an % 2) == 0)
+			sum += an;
 	}
 
 	print_number(sum);
