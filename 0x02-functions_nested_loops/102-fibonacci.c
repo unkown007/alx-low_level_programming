@@ -43,11 +43,11 @@ void fibonacci(void)
 	int count;
 
 	count = 2;
-	
+
 	a1 = 1;
 	print_number(a1);
 	_putchar(',');
-        _putchar(' ');
+	_putchar(' ');
 
 	a2 = 2;
 	print_number(a2);
@@ -64,7 +64,7 @@ void fibonacci(void)
 		if (count < 49)
 		{
 			_putchar(',');
-        		_putchar(' ');
+			_putchar(' ');
 		}
 		count++;
 	}
