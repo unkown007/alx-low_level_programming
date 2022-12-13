@@ -40,8 +40,7 @@ void print_number(long n)
  */
 void fibonacci(void)
 {
-	long int a1, a2, an;
-	long long int sum;
+	long int a1, a2, an, sum;
 
 	sum = 0;
 
