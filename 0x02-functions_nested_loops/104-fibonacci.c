@@ -5,7 +5,7 @@
  */
 void fibonacci(void)
 {
-	long double a1, a2, an;
+	unsigned long a1, a2, an;
 	int count;
 
 	count = 2;
@@ -22,7 +22,10 @@ void fibonacci(void)
 		a1 = a2;
 		a2 = an;
 
-		printf("%.0Lf", (long double) an);
+		if (count == 92)
+			an = an - 1;
+
+		printf("%lu",  an);
 
 		if (count < 97)
 		{
