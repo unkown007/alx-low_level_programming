@@ -22,7 +22,7 @@ void fibonacci(void)
 		a1 = a2;
 		a2 = an;
 
-		printf("%.0Lf",(long double) an);
+		printf("%.0Lf", (long double) an);
 
 		if (count < 97)
 		{
