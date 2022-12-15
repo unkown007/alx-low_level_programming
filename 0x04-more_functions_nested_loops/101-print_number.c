@@ -74,13 +74,14 @@ void print_number(int n)
 	{
 		_putchar('-');
 		if (tmp % 10 != 0)
-                {
-                        print_nzero(tmp);
-                }
-                else
-                {
-                        print_zero(tmp);
-                }
-	}else
+		{
+			print_nzero(tmp);
+		}
+		else
+		{
+			print_zero(tmp);
+		}
+	}
+	else
 		_putchar('0');
 }
