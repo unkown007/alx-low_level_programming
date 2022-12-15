@@ -72,7 +72,7 @@ void print_number(int n)
 	}
 	else if (n < 0)
 	{
-		_putchar('-');
+		_putchar(45);
 		if (tmp % 10 != 0)
 		{
 			print_nzero(tmp);
