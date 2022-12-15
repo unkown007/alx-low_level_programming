@@ -62,9 +62,9 @@ void print_number(int n)
 		_putchar('-');
 		tmp = -n;
 	}
-	if (i / 10)
+	if (tmp / 10)
 	{
-		print_number(i / 10);
+		print_number(tmp / 10);
 	}
-	_putchar(i % 10 + '0');
+	_putchar(tmp % 10 + '0');
 }
