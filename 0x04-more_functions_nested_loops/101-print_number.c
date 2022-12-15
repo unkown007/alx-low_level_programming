@@ -55,33 +55,16 @@ void print_zero(int n)
  */
 void print_number(int n)
 {
-	int tmp;
+	unsigned int tmp = n;
 
-	tmp = (n < 0) ? -n : n;
-
-	if (n > 0)
+	if (n < 0)
 	{
-		if (tmp % 10 != 0)
-		{
-			print_nzero(tmp);
-		}
-		else
-		{
-			print_zero(tmp);
-		}
+		_putchar('-');
+		tmp = -n;
 	}
-	else if (n < 0)
+	if (i / 10)
 	{
-		_putchar(45);
-		if (tmp % 10 != 0)
-		{
-			print_nzero(tmp);
-		}
-		else
-		{
-			print_zero(tmp);
-		}
+		print_number(i / 10);
 	}
-	else
-		_putchar('0');
+	_putchar(i % 10 + '0');
 }
