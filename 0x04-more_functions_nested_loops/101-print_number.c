@@ -55,7 +55,7 @@ void print_zero(int n)
  */
 void print_number(int n)
 {
-	int tmp, aux, nZero;
+	int tmp;
 
 	tmp = (n < 0) ? -n : n;
 
