@@ -27,14 +27,12 @@ int _atoi(char *s)
 	tmp = s;
 
 	while (!_isdigit(*s) && *s != '\0')
-		s++;
-
-	if (*(s - 1) == '-' && (s - 1) >= tmp)
 	{
-		if ((s - 1) == tmp)
+		if (*s == '-')
 			flag = 1;
-		else if (*(s - 2) == '-')
-			flag = 1;
+		else if ((*s >= 65 && *s <= 90)
+			|| (*s >= 97 && *s <= 122))
+		s++;
 	}
 
 	while (_isdigit(*s) && *s != '\0')
@@ -42,6 +40,15 @@ int _atoi(char *s)
 		n = n * 10 + (*s - '0');
 		s++;
 	}
+
+	while (!_isdigit(*s) && *s != '\0')
+	{
+		if ((*s >= 65 && *s <= 90)
+			|| (*s >= 97 && *s <= 122))
+			flag = 0;
+	}
+
+
 
 	return (flag ? -n : n);
 }
