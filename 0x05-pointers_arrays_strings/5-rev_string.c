@@ -31,4 +31,6 @@ void rev_string(char *s)
 	i--;
 	for (; i >= 0; i--)
 		*s++ = tmp[i];
+
+	free(tmp);
 }
