@@ -25,7 +25,7 @@ void print_rev(char *s)
 	int i;
 	char n = 0x0a;
 
-	for (i = _strlen(s); i >= 0; i--)
+	for (i = _strlen(s) - 1; i >= 0; i--)
 		write(1, &s[i], sizeof(char));
 	write(1, &n, sizeof(char));
 }
