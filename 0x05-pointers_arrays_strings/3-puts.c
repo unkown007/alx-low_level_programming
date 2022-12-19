@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -22,6 +22,6 @@ int _strlen(char *s)
  */
 void _puts(char *str)
 {
-	write(stdout, str, _strlen(str));
-	wrtie(stdout, '\n', 1);
+	write(1, str, _strlen(str));
+	wrtie(1, '\n', 1);
 }
