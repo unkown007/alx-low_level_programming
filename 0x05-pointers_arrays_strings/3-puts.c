@@ -22,6 +22,8 @@ int _strlen(char *s)
  */
 void _puts(char *str)
 {
+	int n = 0x0a;
+
 	write(1, str, _strlen(str));
-	write(1,(char) '\n', 1);
+	write(1, &n, sizeof(int));
 }
