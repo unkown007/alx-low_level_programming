@@ -27,7 +27,7 @@ void puts2(char *str)
 	int i;
 
 	for (i = 0; str[i] != '\0'; i++)
-		if (((int)str[i]) % 2 == 0)
+		if (i % 2 == 0)
 			write(1, &str[i], sizeof(char));
 	write(1, &n, sizeof(char));
 }
