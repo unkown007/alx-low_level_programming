@@ -20,15 +20,28 @@ int _isdigit(char s)
 int _atoi(char *s)
 {
 	int n, flag;
+	char *tmp;
 
 	n = 0;
 	flag = 0;
+	tmp = s;
 
 	while (!_isdigit(*s) && *s != '\0')
 	{
 		if (*s == '-')
 			flag = 1;
 		s++;
+	}
+
+	while (*tmp != '\0')
+	{
+		if ((*tmp >= 65 && *tmp <= 90)
+				|| (*tmp >= 97 && *tmp <= 122))
+		{
+			flag = 0;
+			break;
+		}
+		tmp++;
 	}
 
 	while (_isdigit(*s) && *s != '\0')
@@ -40,15 +53,5 @@ int _atoi(char *s)
 		s++;
 	}
 
-	while (!_isdigit(*s) && *s != '\0')
-	{
-		if ((*s >= 65 && *s <= 90)
-			|| (*s >= 97 && *s <= 122))
-			flag = 0;
-		s++;
-	}
-
-
-
-	return (flag ? -n : n);
+	return (n);
 }
