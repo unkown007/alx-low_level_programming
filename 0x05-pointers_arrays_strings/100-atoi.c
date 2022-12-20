@@ -33,7 +33,10 @@ int _atoi(char *s)
 
 	while (_isdigit(*s) && *s != '\0')
 	{
-		n = n * 10 + (*s - '0');
+		if (!flag)
+			n = n * 10 + (*s - '0');
+		else
+			n = n * 10 - (*s - '0');
 		s++;
 	}
 
