@@ -3,7 +3,7 @@
 /**
  * _strcat - concatenates two strings
  * @dest: pointer to char
- * @src: pointer to int
+ * @src: pointer to char
  *
  * Return: Always dest (addr);
  */
