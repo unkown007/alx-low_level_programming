@@ -38,7 +38,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		size++;
 	}
 
-	if ( i >= 0)
+	if (i >= 0)
 	{
 		while (i >= 0)
 		{
@@ -77,7 +77,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	}
 
 	if (size >= size_r)
-		return 0;
+		return (0);
 
 	i = 0;
 	j = size - 1;
