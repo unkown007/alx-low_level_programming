@@ -72,7 +72,12 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	}
 
 	if (sum)
+	{
 		r[size++] = '1';
+	}
+
+	if (size >= size_r)
+		return 0;
 
 	i = 0;
 	j = size - 1;
