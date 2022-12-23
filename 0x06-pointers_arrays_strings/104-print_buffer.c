@@ -8,15 +8,14 @@
  */
 void print_buffer(char *b, int size)
 {
-	int count, i, j, flag, rem;
+	int count, i, j;
 
 	for (i = 0, count = 0; i < size;)
 	{
 		printf("%08x: ", count);
 
 		j = i;
-		flag = i + 2;
-		for (j = i, flag = i + 2; j < (count + 10); j++)
+		for (j = i; j < (count + 10); j++)
 		{
 			if (j < size)
 				printf("%02x", b[j]);
