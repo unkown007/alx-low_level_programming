@@ -19,20 +19,11 @@ void print_buffer(char *b, int size)
 		for (j = i, flag = i + 2; j < (count + 10); j++)
 		{
 			if (j < size)
-			{
-				if (j == flag)
-				{
-					printf(" ");
-					flag += 2;
-				}
 				printf("%02x", b[j]);
-			}
 			else
-			{
-				rem = ((count + 10) - size) + 2;
-				for (; j < (count + 10) + rem; j++)
-					printf(" ");
-			}
+				printf("  ");
+			if (j % 2)
+				printf(" ");
 		}
 
 		printf(" ");
