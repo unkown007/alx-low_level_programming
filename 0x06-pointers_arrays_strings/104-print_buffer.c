@@ -36,7 +36,7 @@ void line(char *b, int size, int l)
  */
 void print_buffer(char *b, int size)
 {
-	int i, j;
+	int i;
 
 	for (i = 0; i <= (size - 1) / 10 && size; i++)
 	{
