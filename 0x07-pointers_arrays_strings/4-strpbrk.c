@@ -13,7 +13,7 @@ int _strchr2(char *str, char c)
 	for (; *str != '\0' && *str != c; str++)
 		;
 
-	return (*str == c);
+	return (*str == c ? 1 : 0);
 }
 
 
@@ -30,5 +30,7 @@ char *_strpbrk(char *s, char *accept)
 	for (; *s && !_strchr2(accept, *s); s++)
 		;
 
+	if (*s == '\0')
+		return (NULL);
 	return (_strchr2(accept, *s) ? (char *) s : NULL);
 }
