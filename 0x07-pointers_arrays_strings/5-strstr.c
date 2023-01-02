@@ -21,17 +21,13 @@ char *_strstr(char *haystack, char *needle)
 			tmp_1++;
 
 		haystack = tmp_1;
-
-		if (*tmp_1 == '\0')
-			return (NULL);
-
 		while (*tmp_1 == *tmp_2 && *tmp_1 && *tmp_2)
 		{
 			tmp_1++;
 			tmp_2++;
 		}
 
-		if (*tmp_2 == '\0')
+		if (*tmp_2 == '\0' && (*tmp_1 == ' ' || *tmp_1 == '\0'))
 			return ((char *) haystack);
 	}
 
