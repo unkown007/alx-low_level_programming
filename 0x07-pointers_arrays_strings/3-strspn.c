@@ -39,7 +39,7 @@ unsigned int _strspn(char *s, char *accept)
 
 		if (!isalpha(*s))
 			return (count);
-		
+
 		while (!_strchr2(accept, *s) && *s != '\0')
 			s++;
 	}
