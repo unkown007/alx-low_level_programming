@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	if (n < 0)
 	{
 		printf("0\n");
-		return (0);
+		return (1);
 	}
 
 	count = 0;
