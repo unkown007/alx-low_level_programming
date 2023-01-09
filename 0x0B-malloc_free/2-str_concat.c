@@ -20,12 +20,27 @@ char *str_concat(char *s1, char *s2)
 		return (NULL);
 
 	tmp = (char *) malloc((strlen(s1) + strlen(s2)) + 1);
+	if (tmp == NULL)
+		return (NULL);
 
 	i = 0;
-	while (*s1 && s1 != NULL)
-		tmp[i++] = *s1++;
-	while (*s2 && s2 != NULL)
-		tmp[i++] = *s2++;
+
+	if (s1 == NULL)
+	{
+		while (*s2)
+			tmp[i++] == *s2++;
+	}
+	else if (s2 == NULL)
+	{
+		while (*s1)
+			tmp[i++] == *s1++;
+	}else
+	{
+		while(*s1)
+			tmp[i++] = *s1++;
+		while(*s2)
+			tmp[i++] = *s2++;
+	}
 	tmp[i] = '\0';
 
 	return ((char *) tmp);
