@@ -17,9 +17,8 @@ char *str_concat(char *s1, char *s2)
 	char *tmp;
 
 	if (s1 == NULL && s2 == NULL)
-		return (NULL);
-
-	if (s1 == NULL)
+		tmp = ((char *) malloc(1));
+	else if (s1 == NULL)
 		tmp = (char *) malloc(strlen(s2) + 1);
 	else if (s2 == NULL)
 		tmp = (char *) malloc(strlen(s1) + 1);
@@ -30,20 +29,20 @@ char *str_concat(char *s1, char *s2)
 		return (NULL);
 
 	i = 0;
-	if (s1 == NULL)
+	if (s1 != NULL && s2 != NULL)
 	{
+		while (*s1)
+			tmp[i++] = *s1++;
 		while (*s2)
 			tmp[i++] = *s2++;
 	}
-	else if (s2 == NULL)
+	if (s1 != NULL)
 	{
 		while (*s1)
 			tmp[i++] = *s1++;
 	}
-	else
+	else if (s2 != NULL)
 	{
-		while (*s1)
-			tmp[i++] = *s1++;
 		while (*s2)
 			tmp[i++] = *s2++;
 	}
