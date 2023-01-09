@@ -19,12 +19,17 @@ char *str_concat(char *s1, char *s2)
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 
-	tmp = (char *) malloc((strlen(s1) + strlen(s2)) + 1);
+	if (s1 == NULL)
+		tmp = (char *) malloc(strlen(s2) + 1);
+	else if (s2 == NULL)
+		tmp = (char *) malloc(strlen(s1) + 1);
+	else
+		tmp = (char *) malloc((strlen(s1) + strlen(s2)) + 1);
+
 	if (tmp == NULL)
 		return (NULL);
 
 	i = 0;
-
 	if (s1 == NULL)
 	{
 		while (*s2)
@@ -34,11 +39,12 @@ char *str_concat(char *s1, char *s2)
 	{
 		while (*s1)
 			tmp[i++] = *s1++;
-	}else
+	}
+	else
 	{
-		while(*s1)
+		while (*s1)
 			tmp[i++] = *s1++;
-		while(*s2)
+		while (*s2)
 			tmp[i++] = *s2++;
 	}
 	tmp[i] = '\0';
