@@ -22,7 +22,7 @@ int *array_range(int min, int max)
 	if (arr == NULL)
 		return (NULL);
 
-	srand((unsigned) time(NULL));
+	srand((time_t) time(NULL));
 	for (i = 0; i < size; i++)
 		arr[i] = min + (rand() % (size));
 
@@ -30,7 +30,8 @@ int *array_range(int min, int max)
 	{
 		for (j = 0; j < size - i; j++)
 		{
-			if (arr[j] > arr[j + 1]){
+			if (arr[j] > arr[j + 1])
+			{
 				aux = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = aux;
