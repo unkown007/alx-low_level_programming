@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 
-	sprintf(buffer, "%ld", result);
+	sprintf(buffer, "%ld\0", result);
 	print_msg(buffer);
 
 	return (0);
