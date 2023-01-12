@@ -3,6 +3,12 @@
 #include <string.h>
 #include <stdio.h>
 
+/**
+ * main - multiplies two positive numbers
+ * @argc: number of arguments
+ * @argv: arguments
+ *
+ * Return: 0
 int main(int argc, char **argv)
 {
 	long n1, n2;
