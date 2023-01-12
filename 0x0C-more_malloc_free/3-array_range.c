@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 #include <math.h>
 #include "main.h"
 
@@ -12,7 +11,7 @@
  */
 int *array_range(int min, int max)
 {
-	int *arr, i, j, size, aux;
+	int *arr, i, size;
 
 	if (min > max)
 		return (NULL);
@@ -22,22 +21,8 @@ int *array_range(int min, int max)
 	if (arr == NULL)
 		return (NULL);
 
-	srand((time_t) time(NULL));
 	for (i = 0; i < size; i++)
-		arr[i] = min + (rand() % (size));
-
-	for (i = 1; i < size; i++)
-	{
-		for (j = 0; j < size - i; j++)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				aux = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = aux;
-			}
-		}
-	}
+		arr[i] = min + i;
 
 	return (arr);
 }
