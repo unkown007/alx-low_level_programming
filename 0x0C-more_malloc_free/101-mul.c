@@ -2,6 +2,20 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdio.h>
+#include "main.h"
+
+/**
+ * print_msg - print msg
+ * @str: msg
+ */
+void print_msg(char *str)
+{
+	int i;
+
+	for (i = 0; str[i]; i++)
+		_putchar(str[i]);
+	_putchar('\n');
+}
 
 /**
  * main - multiplies two positive numbers
@@ -9,14 +23,16 @@
  * @argv: arguments
  *
  * Return: 0
+ */
 int main(int argc, char **argv)
 {
-	long n1, n2;
+	long n1, n2, result;
 	int i, j;
+	char *buffer;
 
 	if (argc != 3)
 	{
-		printf("Error\n");
+		print_msg("Error");
 		exit(98);
 	}
 
@@ -26,7 +42,7 @@ int main(int argc, char **argv)
 		{
 			if (argv[i][j] < '0' && argv[i][j] > '9')
 			{
-				printf("%d - %d Error\n", i, j);
+				print_msg("Error");
 				exit(98);
 			}
 		}
@@ -34,8 +50,16 @@ int main(int argc, char **argv)
 
 	n1 = atol(argv[1]);
 	n2 = atol(argv[2]);
+	result = n1 * n2;
+	buffer = malloc(1024 * sizeof(char));
+	if (buffer == NULL)
+	{
+		print_msg("Error");
+		exit(98);
+	}
 
-	printf("%ld\n", n1 * n2);
+	sprintf(buffer, "%ld", result);
+	print_msg(buffer);
 
 	return (0);
 }
