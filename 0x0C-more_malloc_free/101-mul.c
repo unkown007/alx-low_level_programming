@@ -8,15 +8,18 @@
  */
 void print_msg(char *str, int l)
 {
-	int i, flag = 0;
+	int i, j;
 
-	for (i = 0; i < l; i++)
+	i = j = 0;
+	while (i < l)
 	{
 		if (str[i] != '0')
-			flag = 1;
-		if (flag || i == l - 1)
+			j = 1;
+		if (j || i == l - 1)
 			_putchar(str[i]);
+		i++;
 	}
+
 	_putchar('\n');
 	free(str);
 }
