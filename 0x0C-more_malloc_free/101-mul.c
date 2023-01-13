@@ -21,6 +21,7 @@ void print_msg(char *str, int l)
 			_putchar(str[i]);
 	}
 	_putchar('\n');
+	free(str);
 }
 
 /**
@@ -135,7 +136,6 @@ int main(int argc, char **argv)
 		}
 	}
 	print_msg(buffer, tot_size - 1);
-	free(buffer);
 
 	return (0);
 }
