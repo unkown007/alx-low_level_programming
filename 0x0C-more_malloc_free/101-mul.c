@@ -1,7 +1,4 @@
 #include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -51,7 +48,7 @@ void init(char *mem, int l)
 {
 	int i;
 
-	for (i = 0; i < l - 1; i++)
+	for (i = 0; i < l; i++)
 		mem[i] = '0';
 	mem[i] = '\0';
 }
@@ -110,7 +107,6 @@ int main(int argc, char **argv)
 			_putchar(msg[j]);
 		exit(98);
 	}
-
 	for (size_1 = 0; argv[1][size_1]; size_1++)
 		;
 	for (size_2 = 0; argv[2][size_2]; size_2++)
@@ -123,7 +119,7 @@ int main(int argc, char **argv)
 			_putchar(msg[j]);
 		exit(98);
 	}
-	init(buffer, tot_size);
+	init(buffer, tot_size - 1);
 	for (k = size_2 - 1, i = 0; k >= 0; k--, i++)
 	{
 		r = mult(buffer, tot_size - i, argv[1], size_1 - 1, argv[2][k]);
