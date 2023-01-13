@@ -7,13 +7,19 @@
 /**
  * print_msg - print msg
  * @str: msg
+ * @l: size
  */
-void print_msg(char *str)
+void print_msg(char *str, int l)
 {
-	int i;
+	int i, flag = 0;
 
-	for (i = 0; str[i]; i++)
-		_putchar(str[i]);
+	for (i = 0; i < l; i++)
+	{
+		if (str[i] != '0')
+			flag = 1;
+		if (flag || i == l - 1)
+			_putchar(str[i]);
+	}
 	_putchar('\n');
 }
 
@@ -29,79 +35,59 @@ int check(int argc, char **argv)
 	int i, j;
 
 	for (i = 0; i < argc; i++)
-	{
 		for (j = 0; argv[i][j] != '\0'; j++)
-		{
 			if (argv[i][j] < '0' && argv[i][j] > '9')
-			{
 				return (1);
-			}
-		}
-	}
 	return (0);
+}
+
+/**
+ * init - inicialize an allocated memory
+ * @mem: memory to inicialize
+ * @l: length of the memory
+ */
+void init(char *mem, int l)
+{
+	int i;
+
+	for (i = 0; i < l - 1; i++)
+		mem[i] = '0';
+	mem[i] = '\0';
 }
 
 /**
  * mult - multiplies a string of digit with one digit
  * and stores in buffer
  * @buffer: pointer to the buffer
- * @str: a string of digit
+ * @num:  number
  * @digit: character digit
+ * @num_index: last index of the number
+ * @buff_index: destiny index
+ *
+ * Return: 1 success, 0 otherwise
  */
-void mult(char *buffer, char *str, char digit)
+int mult(char *buffer, int buff_index, char *num, int num_index, char digit)
 {
-	int result = 0, d, i, j = 0;
+	int addrem, mulrem, add, mul, i, j;
 
-	d = digit - '0';
-	for (i = strlen(str) - 1; i >= 0; i--)
+	addrem = mulrem = 0;
+	for (i = num_index, j = buff_index - 2; i >= 0; i--, j--)
 	{
-		result = (str[i] - '0') * d + (result / 10);
-		buffer[j++] = (result % 10) + '0';
+		mul = (digit - '0') * (num[i] - '0') + mulrem;
+		mulrem = mul / 10;
+		add = (buffer[j] - '0') + (mul % 10) + addrem;
+		addrem = add / 10;
+		buffer[j] = (add % 10) + '0';
 	}
-	if ((result / 10) > 0)
-		buffer[j++] = (result / 10) + '0';
-	buffer[j] = '\0';
-}
-
-/**
- * _add - add two digit strings
- * @s1: first string
- * @s2: second string
- * @pos: starting pos to sum
- */
-void _add(char *s1, char *s2, int pos)
-{
-	int i, r = 0, j = 0;
-
-	for (i = 0; s2[j]; i++)
+	for (addrem += mulrem; j >= 0 && addrem; j--)
 	{
-		if (i >= pos)
-		{
-			r = ((s1[i] - '0') + (s2[j] - '0')) + (r / 10);
-			s1[i] = (r % 10) + '0';
-			j++;
-		}
+		add = (buffer[j] - '0') + addrem;
+		addrem = add / 10;
+		buffer[j] = (add % 10) + '0';
 	}
-	if ((r / 10) > 0)
-		s1[i] = (r / 10) + '0';
-	s1[i + 1] = '\0';
-}
-
-/**
- * rev - reverts the string
- * @beg: pointer to the begining
- * @end: pointer to the end
- */
-void rev(char *beg, char *end)
-{
-	char aux;
-
-	if (end < beg)
-		return;
-	aux = *beg;
-	*beg = *end;
-	*end = aux;
-	rev(beg + 1, end - 1);
+	if (addrem)
+		return (0);
+	return (1);
 }
 
 /**
@@ -113,12 +99,14 @@ void rev(char *beg, char *end)
  */
 int main(int argc, char **argv)
 {
-	int i, j, size_1, size_2, size, tot_size;
-	char *buffer, *tmp;
+	int i, j, k, r = 1, size_1, size_2, tot_size;
+	char *buffer;
+	char msg[] = "Error\n";
 
 	if (argc != 3 || check(argc, argv))
 	{
-		print_msg("Error");
+		for (j = 0; msg[j]; j++)
+			_putchar(msg[j]);
 		exit(98);
 	}
 
@@ -126,45 +114,28 @@ int main(int argc, char **argv)
 		;
 	for (size_2 = 0; argv[2][size_2]; size_2++)
 		;
-
-	if (size_1 > size_2)
-		size = size_1;
-	else
-		size = size_2;
-	tmp = malloc((size + 1) * sizeof(char));
-	if (tmp == NULL)
-	{
-		print_msg("Error");
-		exit(98);
-	}
-	tot_size = (size_1 * size_2) + 1;
+	tot_size = size_1 + size_2 + 1;
 	buffer = malloc(tot_size * sizeof(char));
 	if (buffer == NULL)
 	{
-		print_msg("Error");
+		for (j = 0; msg[j]; j++)
+			_putchar(msg[j]);
 		exit(98);
 	}
-	memset(buffer, '0', tot_size);
-
-	if (strlen(argv[1]) > strlen(argv[2]))
+	init(buffer, tot_size);
+	for (k = size_2 - 1, i = 0; k >= 0; k--, i++)
 	{
-		for (i = strlen(argv[2]) - 1, j = 0; i >= 0; i--, j++)
+		r = mult(buffer, tot_size - i, argv[1], size_1 - 1, argv[2][k]);
+		if (r == 0)
 		{
-			mult(tmp, argv[1], argv[2][i]);
-			_add(buffer, tmp, j);
-		}
-	} else
-	{
-		for (i = strlen(argv[1]) - 1, j = 0; i >= 0; i--, j++)
-		{
-			mult(tmp, argv[2], argv[1][i]);
-			_add(buffer, tmp, j);
+			for (j = 0; msg[j]; j++)
+				_putchar(msg[j]);
+			free(buffer);
+			exit(98);
 		}
 	}
-	rev(buffer, buffer + strlen(buffer) - 1);
-	print_msg(buffer);
+	print_msg(buffer, tot_size - 1);
 	free(buffer);
-	free(tmp);
 
 	return (0);
 }
