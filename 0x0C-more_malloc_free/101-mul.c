@@ -1,12 +1,14 @@
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * print_msg - print msg
- * @str: msg
- * @l: size
+ * _print - moves a string one place to the left and prints the string
+ * @str: string to move
+ * @l: size of string
+ *
+ * Return: void
  */
-void print_msg(char *str, int l)
+void _print(char *str, int l)
 {
 	int i, j;
 
@@ -22,38 +24,6 @@ void print_msg(char *str, int l)
 
 	_putchar('\n');
 	free(str);
-}
-
-/**
- * check - check for existence of non digit char in an array of string
- * @argc: number of strings
- * @argv: array of strings
- *
- * Return: 1 if non digit is present, 0 otherwise
- */
-int check(int argc, char **argv)
-{
-	int i, j;
-
-	for (i = 0; i < argc; i++)
-		for (j = 0; argv[i][j] != '\0'; j++)
-			if (argv[i][j] < '0' && argv[i][j] > '9')
-				return (1);
-	return (0);
-}
-
-/**
- * init - inicialize an allocated memory
- * @mem: memory to inicialize
- * @l: length of the memory
- */
-void init(char *mem, int l)
-{
-	int i;
-
-	for (i = 0; i < l; i++)
-		mem[i] = '0';
-	mem[i] = '\0';
 }
 
 /**
@@ -91,22 +61,58 @@ char *mul(char n, char *num, int num_index, char *dest, int dest_index)
 	}
 	return (dest);
 }
+/**
+ * check_for_digits - checks the arguments to ensure they are digits
+ * @av: pointer to arguments
+ *
+ * Return: 0 if digits, 1 if not
+ */
+int check_for_digits(char **av)
+{
+	int i, j;
+
+	for (i = 1; i < 3; i++)
+	{
+		for (j = 0; av[i][j]; j++)
+		{
+			if (av[i][j] < '0' || av[i][j] > '9')
+				return (1);
+		}
+	}
+	return (0);
+}
 
 /**
- * main - multiplies two positive numbers
- * @argc: number of arguments
- * @argv: arguments
+ * init - initializes a string
+ * @str: sting to initialize
+ * @l: length of strinf
  *
- * Return: 0
+ * Return: void
  */
-int main(int argc, char **argv)
+void init(char *str, int l)
+{
+	int i;
+
+	for (i = 0; i < l; i++)
+		str[i] = '0';
+	str[i] = '\0';
+}
+
+/**
+ * main - multiply two numbers
+ * @argc: number of arguments
+ * @argv: argument vector
+ *
+ * Return: zero, or exit status of 98 if failure
+ */
+int main(int argc, char *argv[])
 {
 	int l1, l2, ln, ti, i;
 	char *a;
 	char *t;
 	char e[] = "Error\n";
 
-	if (argc != 3 || check(argc, argv))
+	if (argc != 3 || check_for_digits(argv))
 	{
 		for (ti = 0; e[ti]; ti++)
 			_putchar(e[ti]);
@@ -136,7 +142,6 @@ int main(int argc, char **argv)
 			exit(98);
 		}
 	}
-	print_msg(a, ln - 1);
-
+	_print(a, ln - 1);
 	return (0);
 }
