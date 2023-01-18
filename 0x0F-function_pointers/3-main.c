@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 #include "3-calc.h"
 
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (argv[2][1] != '\0')
+	if (strlen(argv[2]) != 1)
 	{
 		printf("Error\n");
 		exit(99);
