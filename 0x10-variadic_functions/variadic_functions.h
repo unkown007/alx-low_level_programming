@@ -11,7 +11,7 @@
 struct t
 {
 	char *c;
-	void (*f)(va_list, char*);
+	void (*f)(va_list, char *);
 };
 typedef struct t _type;
 

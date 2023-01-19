@@ -56,6 +56,8 @@ void print_all(const char * const format, ...)
 {
 	va_list ap;
 	char *separator;
+	int i, j;
+
 	_type l[] = {
 		{"c", print_c},
 		{"i", print_i},
@@ -63,7 +65,6 @@ void print_all(const char * const format, ...)
 		{"s", print_s},
 		{NULL, NULL}
 	};
-	int i, j;
 
 	va_start(ap, format);
 	i = 0;
@@ -82,6 +83,6 @@ void print_all(const char * const format, ...)
 		}
 		i++;
 	}
-	putchar('\n');
+	printf("\n");
 	va_end(ap);
 }
