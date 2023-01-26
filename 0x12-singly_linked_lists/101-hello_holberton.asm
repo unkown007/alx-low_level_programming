@@ -1,17 +1,18 @@
 section .data
-	msg db "Hello, Holberton",0xa
-	len equ $ - msg
+	msg: db "Hello, Holberton",0xa,0
+	fmt: db "%s", 0
 	
-	section .text
+section .text
+	default rel
+	extern printf
 	global main
 
 main:
-	mov rdx,len
-	mov rcx,msg
-	mov rbx,1
-	mov rax,4
-	int 0x80
-
-	mov rbx,0
-	mov rax,1
-	int 0x80
+	push rbp
+	mov rdi, fmt
+	mov rsi, msg
+	mov rax, 0
+	call printf
+	pop rbp
+	mov rax, 0
+	ret
