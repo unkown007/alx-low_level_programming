@@ -31,5 +31,6 @@ size_t print_listint_safe(const listint_t *head);
 size_t free_listint_safe(listint_t **h);
 const listint_t **add_address(const listint_t **old_addr, size_t size,
                 const listint_t *new_addr);
+listint_t *find_listint_loop(listint_t *head);
 
 #endif
