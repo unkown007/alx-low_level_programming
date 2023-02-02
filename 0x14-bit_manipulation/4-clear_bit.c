@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * set_bit - sets the value of a bit to 0 at a given indiex
+ * clear_bit - sets the value of a bit to 0 at a given indiex
  * @n: pointer to the number
  * @index: index starting from 0 of the bit
  *
