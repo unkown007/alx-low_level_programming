@@ -23,7 +23,7 @@ void _copy(int fd_1, int fd_2, char *f1, char *f2)
 		r = read(fd_1, buff, BUFF_SIZE);
 		if (r == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s", f1);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", f1);
 			exit(98);
 		}
 		w = write(fd_2, buff, (size_t) r);
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 	fd_1 = open(argv[1], O_RDONLY);
 	if (fd_1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	fd_2 = creat(argv[2], PERMS);
