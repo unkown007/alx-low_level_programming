@@ -34,14 +34,12 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	n = read(fd, buff, letters);
 	if (n == -1)
 		return (0);
-	m = write(1, buff, n);
-	if (m == -1)
+	m = write(STDOUT_FILENO, buff, n);
+	if (m == -1 || m != n)
 	{
 		free(buff);
 		return (0);
 	}
-	if (m != n)
-		return (0);
 	free(buff);
 	close(fd);
 	return (m);
