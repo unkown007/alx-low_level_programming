@@ -33,7 +33,7 @@ int is_Elf64(Elf64_Ehdr eh)
 
 void print_elf_header64(Elf64_Ehdr elf_header)
 {
-	char *s;
+	char *s, addr[10];
 	int i;
 
 	printf("  Magic:   ");
@@ -45,7 +45,7 @@ void print_elf_header64(Elf64_Ehdr elf_header)
 			putchar(' ');
 	}
 	putchar('\n');
-	printf("  Class:\t\t\t\t");
+	printf("  Class:\t\t\t     ");
 	switch(elf_header.e_ident[EI_CLASS])
 	{
 		case ELFCLASS32:
@@ -58,7 +58,7 @@ void print_elf_header64(Elf64_Ehdr elf_header)
 			printf("INVALID CLASS\n");
 			break;
 	}
-	printf("  Data:\t\t\t\t\t");
+	printf("  Data:\t\t\t\t     ");
 	switch(elf_header.e_ident[EI_DATA])
 	{
 		case ELFDATA2LSB:
@@ -71,7 +71,7 @@ void print_elf_header64(Elf64_Ehdr elf_header)
 			printf("INVALID Format\n");
 			break;
 	}
-	printf("  Version:\t\t\t\t");
+	printf("  Version:\t\t\t     ");
 	switch(elf_header.e_ident[EI_VERSION])
 	{
 		case EV_NONE:
@@ -81,7 +81,7 @@ void print_elf_header64(Elf64_Ehdr elf_header)
 			printf("1 (current)\n");
 			break;
 	}
-	printf("  OS/ABI:\t\t\t\t");
+	printf("  OS/ABI:\t\t\t     ");
 	switch(elf_header.e_ident[EI_OSABI])
 	{
 		case ELFOSABI_SYSV:
@@ -91,7 +91,7 @@ void print_elf_header64(Elf64_Ehdr elf_header)
 			printf("HP-UX\n");
 			break;
 		case ELFOSABI_LINUX:
-			printf("Linux\n");
+			printf("UNIX - GNU\n");
 			break;
 		case ELFOSABI_SOLARIS:
 			printf("UNIX - Solares\n");
@@ -127,8 +127,8 @@ void print_elf_header64(Elf64_Ehdr elf_header)
 			printf("<unknown %d>\n", elf_header.e_ident[EI_OSABI]);
 			break;
 	}
-	printf("  ABI Version:\t\t\t\t%d\n", elf_header.e_ident[EI_ABIVERSION]);
-	printf("  Type:\t\t\t\t\t");
+	printf("  ABI Version:\t\t\t     %d\n", elf_header.e_ident[EI_ABIVERSION]);
+	printf("  Type:\t\t\t\t     ");
 	switch(elf_header.e_type)
 	{
 		case ET_NONE:
@@ -147,7 +147,8 @@ void print_elf_header64(Elf64_Ehdr elf_header)
 			printf("<unknown: %d>\n", elf_header.e_type);
 			break;
 	}
-	printf("  Entry point address:\t\t\t0x%lx\n", elf_header.e_entry);
+	sprintf(addr, "%lx", elf_header.e_entry);
+	printf("  Entry point address:\t\t     0x%s\n", addr + 5);
 }
 
 int32_t main(int argc, char *argv[])
@@ -173,7 +174,7 @@ int32_t main(int argc, char *argv[])
 		fprintf(stderr, "Error: %s is not an ELF file\n", argv[1]);
 		exit(98);
 	}
-	printf("ELF HEADER:\n");
+	printf("ELF Header:\n");
 	if (is_Elf64(eh))
 	{
 		print_elf_header64(eh);
