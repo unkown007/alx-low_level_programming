@@ -255,8 +255,8 @@ int32_t main(int argc, char *argv[])
 	read_elf_header(fd, &eh);
 	if (!is_Elf(eh))
 	{
-		fprintf(stderr, "%s: Error: Not an ELF file -
-			it has the wrong magic bytes at the start\n", argv[0]);
+		fprintf(stderr, "%s: Error: Not an ELF file -", argv[0]);
+		fprintf(stderr, " it has the wrong magic bytes at the start\n");
 		exit(98);
 	}
 	printf("ELF Header:\n");
