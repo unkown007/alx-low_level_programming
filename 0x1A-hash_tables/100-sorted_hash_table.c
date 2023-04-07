@@ -172,7 +172,6 @@ void shash_table_print(const shash_table_t *ht)
 
 	if (ht == NULL)
 	{
-		printf("{}\n");
 		return;
 	}
 	putchar('{');
@@ -197,7 +196,6 @@ void shash_table_print_rev(const shash_table_t *ht)
 
 	if (ht == NULL)
 	{
-		printf("{}\n");
 		return;
 	}
 	putchar('{');
