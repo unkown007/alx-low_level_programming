@@ -18,6 +18,8 @@ int main(void)
     hash_table_set(ht, "mentioner", "maputo");
     hash_table_set(ht, "heliotropes", "bagamoyo");
     hash_table_set(ht, "neurospora", "igreja");
+    hash_table_set(ht, "hetairas", "victor");
+    hash_table_set(ht, "mentioner", "maputo mubukwana");
     hash_table_print(ht);
     hash_table_delete(ht);
     return (EXIT_SUCCESS);
