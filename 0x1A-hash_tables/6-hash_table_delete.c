@@ -12,6 +12,7 @@ void hash_node_delete(hash_node_t *head)
 	{
 		tmp = head;
 		head = head->next;
+		free(tmp->key);
 		free(tmp->value);
 		free(tmp);
 	}

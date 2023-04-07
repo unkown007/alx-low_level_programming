@@ -42,7 +42,7 @@ shash_node_t *create_snode(const char *key, const char *value)
 	node = malloc(sizeof(shash_node_t));
 	if (node == NULL)
 		return (NULL);
-	node->key =(char *) key;
+	node->key = strdup(key);
 	node->value = strdup(value);
 	node->next = NULL;
 	node->sprev = NULL;
@@ -108,9 +108,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	shash_node_t *node;
 	unsigned long int index;
 
-	if (ht == NULL)
-		return (0);
-	if (key == NULL || strlen(key) == 0 || value == NULL)
+	if (ht == NULL || key == NULL || value == NULL)
 		return (0);
 	new_node = create_snode(key, value);
 	index = key_index((const unsigned char *)key, ht->size);
@@ -227,6 +225,7 @@ void shash_table_delete(shash_table_t *ht)
 	{
 		tmp = node;
 		node = node->snext;
+		free(tmp->key);
 		free(tmp->value);
 		free(tmp);
 	}
