@@ -14,5 +14,11 @@ int main(void)
 
     ht = hash_table_create(1024);
     hash_table_set(ht, "betty", "cool");
+    hash_table_set(ht, "hetairas", "praia");
+    hash_table_set(ht, "mentioner", "maputo");
+    hash_table_set(ht, "heliotropes", "bagamoyo");
+    hash_table_set(ht, "neurospora", "igreja");
+    hash_table_print(ht);
+    hash_table_delete(ht);
     return (EXIT_SUCCESS);
 }
