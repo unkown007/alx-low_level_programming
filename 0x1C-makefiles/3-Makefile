@@ -2,6 +2,7 @@ CC=gcc
 SRC=school.c main.c
 OBJ=$(SRC:.c=.o)
 NAME=school
+RM=rm
 
 all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
@@ -12,9 +13,9 @@ all: $(OBJ)
 re: oclean all
 
 clean:
-	rm -f *.swo *swp *~ $(NAME)
+	$(RM) -f *~ $(NAME)
 
 oclean:
-	rm -f $(OBJ)
+	$(RM) -f $(OBJ)
 
 fclean: clean oclean
