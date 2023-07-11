@@ -50,7 +50,7 @@ int bs(int *array, int value, size_t beg, size_t end)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	if (array == NULL)
+	if (array == NULL || size == 0)
 		return (-1);
 	return (bs(array, value, 0, size - 1));
 }
