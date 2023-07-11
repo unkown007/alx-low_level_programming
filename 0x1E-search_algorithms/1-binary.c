@@ -16,17 +16,17 @@ int bs(int *array, int value, size_t beg, size_t end)
 {
 	size_t mid, i;
 
-	printf("Searching in array: ");
-	for (i = beg; i <= end; i++)
-	{
-		printf("%d", array[i]);
-		if (i != end)
-			printf(", ");
-		else
-			printf("\n");
-	}
 	if (beg <= end)
 	{
+		printf("Searching in array: ");
+		for (i = beg; i <= end; i++)
+		{
+			printf("%d", array[i]);
+			if (i != end)
+				printf(", ");
+			else
+				printf("\n");
+		}
 		mid  = (beg + end) / 2;
 		if (array[mid] == value)
 			return (mid);
