@@ -25,7 +25,7 @@ int bs(int *array, int value, size_t beg, size_t end)
 		else
 			printf("\n");
 	}
-	if (beg < end)
+	if (beg <= end)
 	{
 		mid  = (beg + end) / 2;
 		if (array[mid] == value)
